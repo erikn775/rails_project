@@ -1,0 +1,19 @@
+<%= form_with(model: @car) do |f| %>
+   <%= f.label("Year:") %><br>
+   <%= f.text_field(:year) %><br>
+   <%= f.label("Make:") %><br>
+   <%= f.text_field(:make) %><br>
+   <%= f.label("Model:") %><br>
+   <%= f.text_field(:model) %><br>
+   <%= f.label("Color:") %><br>
+   <%= f.text_field(:color) %><br>
+   <%= f.label("Transmission:") %><br>
+   <%= f.select :transmission, ["Manual", "Automatic"] %><br>
+   <%= f.label("Body Style:") %><br>
+   <%= f.select :body_style, ["Sedan", "Coupe", "Convertible", "Hatchback", "Mid-size SUV", "Large SUV", "Truck", "Van"] %><br>
+   <%= f.label("Engine Type:") %><br>
+   <%= f.select :engine, ["Gasoline", "Diesel", "Hybrid", "Electric"] %><br>
+   <%= f.label("Mileage:") %><br>
+   <%= f.text_field :mileage %><br><br>
+   <%= f.submit %><br>
+<% end %>
