@@ -1,10 +1,13 @@
 class CarsController < ApplicationController
     include ApplicationHelper
-    
-    #before_action :require_login
+    before_action :require_login
 
     def index
-        @cars = Cars.all
+        if params[:user_id]
+            @cars = User.find(params[:user_id]).cars
+        else
+            @cars = Cars.all
+        end
     end
 
     def new
@@ -16,7 +19,7 @@ class CarsController < ApplicationController
         if @car.save
             redirect_to car_path(@car)
         else
-            #flash alert or something
+            @error = @car.errors.full_messages.join(" - ")
             render :new
         end
     end
@@ -26,20 +29,24 @@ class CarsController < ApplicationController
     end
 
     def edit
-
+        @car = Car.find_by(id: params[:id])
     end
 
     def update
-
+        @car = Car.find_by(id: params[:id])
+        @car.update(car_params)
+        redirect_to car_path(@car)
     end
 
     def destroy
-
+        @car = Car.find_by(id: params[:id])
+        @car.destroy
+        redirect_to 
     end
 
     private
 
     def car_params
-        params.require(:cars).permit(:year, :make, :model, :color, :transmission, :engine, :body_style, :mileage)
+        params.require(:car).permit(:year, :make, :model, :color, :transmission, :engine, :body_style, :mileage)
     end
 end

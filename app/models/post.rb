@@ -6,4 +6,8 @@ class Post < ApplicationRecord
     accepts_nested_attributes_for :categories
     validates :image_url, :title, :content, presence: true
     validates :image_url, uniqueness: true
+
+    def liked?(user)
+        !!self.likes.find{|like| like.user_id == user.id}
+    end
 end
