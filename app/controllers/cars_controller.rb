@@ -41,7 +41,7 @@ class CarsController < ApplicationController
     def destroy
         @car = Car.find_by(id: params[:id])
         @car.destroy
-        redirect_to 
+        redirect_to user_post_index_path(@car)
     end
 
     private

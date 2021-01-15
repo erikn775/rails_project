@@ -44,7 +44,7 @@ body {font-family: "Lato", sans-serif;}
 <body>
 <% if logged_in? %>
   <div class="sidebar">
-    <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
+    <a href="/users/<%=current_user.id%>/post"><i class="fa fa-fw fa-home"></i> Home</a>
     <a href="/categories"><i class="fa fa-fw fa-list-alt"></i> Categories</a>
     <a href="/cars/new"><i class="fa fa-fw fa-car"></i> Add a Car</a>
     <a href="/users/<%=current_user.id%>/cars"><i class="fa fa-fw fa-car"></i> Cars</a>

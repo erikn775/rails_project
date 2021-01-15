@@ -4,8 +4,6 @@
     <%= f.label("Title:") %><br>
     <%= f.text_field(:title) %><br>
     <%= f.label("Description:") %><br>
-    <%= f.text_field(:content) %><br>
-    <%= f.label("Category:") %><br>
-    <%= f.collection_select(:category_id, Category.order(:name), :id, :name, prompt: true) %><br>
+    <%= f.text_area(:content) %><br><br>
     <%= f.submit %>
 <% end %>
