@@ -5,7 +5,5 @@
     <%= f.text_field(:title) %><br>
     <%= f.label("Description:") %><br>
     <%= f.text_area(:content) %><br><br>
-    <%= f.label("Tags:") %><br>
-    <%= f.collection_check_boxes(:category_ids, Category.order(:name), :id, :name, prompt: true) %><br>
     <%= f.submit %>
 <% end %>

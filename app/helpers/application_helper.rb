@@ -18,5 +18,11 @@ module ApplicationHelper
         end
     end
 
-    
+    def display_image(image)
+        image_tag(image)
+    end
+
+    def time_posted(created_at)
+        created_at.strftime("%b %d, %Y")
+    end
 end

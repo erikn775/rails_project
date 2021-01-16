@@ -8,13 +8,14 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
-        @post.post_categories.build.build_category
+        @post.post_categories.build
     end
 
     def create
-        @post = current_user.posts.new(post_params)
+        
+        @post = current_user.posts.new(post_params)   
         if @post.save
-            redirect_to user_post_index_path(current_user)
+            redirect_to user_path(current_user)
         else
             flash.now[:alert] = "There was a problem"
             render :new
@@ -23,11 +24,12 @@ class PostsController < ApplicationController
 
     def add_category
         @post = Post.find(params[:id])
-        @post.categories << Category.find(params[:category_id])
+        
     end
 
     def show
         @post = Post.find_by(id: params[:id])
+        
     end
 
     def edit
@@ -50,6 +52,6 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:image_url, :title, :content)
+        params.require(:post).permit(:image_url, :title, :content, category_ids: [])
     end
 end

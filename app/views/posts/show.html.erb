@@ -1,0 +1,11 @@
+<h3>Posted by: <%= @post.user.name.capitalize %><br><br></h3>
+
+Title:<br><br>
+<%= @post.title %><br><br>
+Description:<br>
+<p><%= @post.content %></p><br>
+
+Date Posted:<br>
+<%= time_posted(@post.created_at) %><br>
+
+<%= button_to "Delete Post", post_path(:id => @post.id), :method => :delete %>
