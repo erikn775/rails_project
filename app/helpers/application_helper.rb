@@ -22,8 +22,12 @@ module ApplicationHelper
         image_tag(image)
     end
 
-    def time_posted(created_at)
+    def date_posted(created_at)
         created_at.strftime("%b %d, %Y")
+    end
+
+    def time_posted(created_at)
+        created_at.strftime("%I:%M %P %b %d, %Y")
     end
 
     def filter(params)

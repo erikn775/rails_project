@@ -22,9 +22,10 @@ class PostsController < ApplicationController
         end
     end
 
-    def add_category
-        @post = Post.find(params[:id])
-        
+    def like
+        @post = Post.all.find_by(id: params[:id])
+        Like.create(user_id: current_user.id, post_id: @post.id)
+        redirect_to user_path(current_user)
     end
 
     def show

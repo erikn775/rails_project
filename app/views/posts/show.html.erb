@@ -1,12 +1,20 @@
 <h3>Posted by: <%= @post.user.name.capitalize %><br><br></h3>
 
+<% if logged_in? %><br>
+   <% if @post.liked?(current_user) %><br>
+      <%= button_to "Like", like_path(@post), method: "put", disabled: true %>
+   <% else %>
+      <%= button_to "Like", like_path(@post), method: "put" %> 
+   <% end %>
+<% end %>
+
 Title:<br><br>
 <%= @post.title %><br><br>
 Description:<br>
 <p><%= @post.content %></p><br>
 
 Date Posted:<br>
-<%= time_posted(@post.created_at) %><br><br>
+<%= date_posted(@post.created_at) %><br><br>
 
 Tags:
 <% @post.post_categories.each do |post| %>
