@@ -25,4 +25,24 @@ module ApplicationHelper
     def time_posted(created_at)
         created_at.strftime("%b %d, %Y")
     end
+
+    def filter(params)
+    
+            
+        if params != nil
+            params = params.capitalize
+                if Category.find_by(name: "#{params}") != nil
+                    Category.find_by(name: "#{params}").posts
+                elsif params == "All"
+                    Post.all
+                else
+                    flash.now[:alert] = "No tag with that name"
+                    Post.all
+                end
+        else
+            Post.all
+        end
+    end
+
+    
 end

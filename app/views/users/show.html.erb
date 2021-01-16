@@ -1,6 +1,50 @@
+<style>
+div.polaroid {
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 100px;
+  border-radius: 10px;
+}
+
+img {
+    width: 100%;
+}
+
+div.container {
+  text-align: left;
+  padding: 10px 20px;
+}
+
+body {
+  background-color: #F5F5F5;
+}
+</style>
+<body>
 <h1>Posts</h1>
 
-<% @posts.each do |post| %><br>
-    <h2><%=post.title %></h2>
-    <%= link_to(display_image(post.image_url), post_path(post)) %>
+
+
+<%= form_tag(user_path, method:"get") do |f| %>
+    <%= label_tag("Search:") %>
+    <%= text_field_tag('filter') %>
+    <%= submit_tag("Search") %>
+<% end %><br>
+
+<% flash.each do |type, msg| %>
+    <div>
+      <%= msg %><br>
+    </div>
+  <% end %>
+  
+
+<div class="polaroid">
+<% @posts.each do |post| %>
+     <div class="container" <h1><%=post.user.name %></h1>
+     <%= time_posted(post.created_at) %>
+     </div>
+     <%= link_to(display_image(post.image_url), post_path(post)) %>
 <% end %>
+</div
+
+</body>

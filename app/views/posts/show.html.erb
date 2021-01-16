@@ -6,6 +6,12 @@ Description:<br>
 <p><%= @post.content %></p><br>
 
 Date Posted:<br>
-<%= time_posted(@post.created_at) %><br>
+<%= time_posted(@post.created_at) %><br><br>
+
+Tags:
+<% @post.post_categories.each do |post| %>
+   <%= post.category.name+' '%>
+<% end %><br>
+
 
 <%= button_to "Delete Post", post_path(:id => @post.id), :method => :delete %>

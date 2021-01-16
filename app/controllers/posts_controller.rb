@@ -3,7 +3,7 @@ class PostsController < ApplicationController
     before_action :require_login
 
     def index
-        @posts = Post.all
+            @posts = Post.all
     end
 
     def new
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
     def destroy
         @post = Post.find_by(id: params[:id])
         @post.destroy
-        redirect_to account_path(@post)
+        redirect_to user_path(@post)
     end
 
 
