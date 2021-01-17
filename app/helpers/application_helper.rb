@@ -30,13 +30,7 @@ module ApplicationHelper
         created_at.strftime("%I:%M %P %b %d, %Y")
     end
 
-    
-        
-    
-
-    def filter(params)
-    
-            
+    def filter(params)     
         if params != nil
             params = params.capitalize
                 if Category.find_by(name: "#{params}") != nil
@@ -52,5 +46,19 @@ module ApplicationHelper
         end
     end
 
-    
+    def like_helper(post)
+        if logged_in?
+            if post.liked?(current_user) 
+                button_to "Like", like_path(post), method: "put", disabled: true   
+            else 
+                button_to "Like", like_path(post), method: "put" 
+            end
+        end
+    end
+
+    def post_delete_helper(post)
+        if logged_in? && current_user.id == post.user_id
+            button_to "Delete Post", user_path(post), :method => :delete
+        end
+    end
 end

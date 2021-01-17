@@ -1,11 +1,10 @@
 <h3>Posted by: <%= @post.user.name.capitalize %><br><br></h3>
 
+<%= like_helper(@post) %><br>
+   
+
 <% if logged_in? %><br>
-   <% if @post.liked?(current_user) %><br>
-      <%= button_to "Like", like_path(@post), method: "put", disabled: true %>
-   <% else %>
-      <%= button_to "Like", like_path(@post), method: "put" %> 
-   <% end %>
+   <%= button_to "Comment", comment_path(@post), method: "put" %>
 <% end %>
 
 Title:<br><br>
@@ -19,7 +18,7 @@ Date Posted:<br>
 Tags:
 <% @post.post_categories.each do |post| %>
    <%= post.category.name+' '%>
-<% end %><br>
+<% end %><br><br>
 
+<%= post_delete_helper(@post) %>
 
-<%= button_to "Delete Post", post_path(:id => @post.id), :method => :delete %>

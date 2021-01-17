@@ -8,7 +8,6 @@ class PostsController < ApplicationController
     end
 
     def create
-        
         @post = current_user.posts.new(post_params)   
         if @post.save
             redirect_to user_path(current_user)
@@ -21,6 +20,18 @@ class PostsController < ApplicationController
     def like
         @post = Post.all.find_by(id: params[:id])
         Like.create(user_id: current_user.id, post_id: @post.id)
+        redirect_to user_path(current_user)
+    end
+
+    def comment
+        #Need to add a content field in the comments table but I will do that later
+        #
+        #
+        #
+        #
+        # dont forget =<
+        @post = Post.all.find_by(id: params[:id])
+        @comment = Comment.create(user_id: current_user.id, post_id: @post.id)
         redirect_to user_path(current_user)
     end
 
@@ -53,4 +64,5 @@ class PostsController < ApplicationController
     def post_params
         params.require(:post).permit(:image_url, :title, :content, category_ids: [])
     end
+
 end

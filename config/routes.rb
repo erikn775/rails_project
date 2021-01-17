@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/account/:id' => 'users#show'
   put '/post/:id/like' => 'posts#like', as: 'like'
+  put '/post/:id/comment' => 'posts#comment', as: 'comment'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
