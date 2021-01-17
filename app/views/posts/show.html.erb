@@ -1,8 +1,9 @@
+
+
 <h3>Posted by: <%= @post.user.name.capitalize %><br><br></h3>
 
-<%= like_helper(@post) %><br>
-   
-<%= comment_helper(@post) %><br>
+
+
    
 Title:<br><br>
 <%= @post.title %><br><br>
@@ -17,5 +18,8 @@ Tags:
    <%= post.category.name+' '%>
 <% end %><br><br>
 
-<%= delete_helper(@post) %>
 
+<%= like_helper(@post) %><br>
+<%= comment_helper(@post) %><br>
+<%= post_edit_helper(@post) %><br>
+<%= post_delete_helper(@post) %><br>

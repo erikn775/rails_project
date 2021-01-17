@@ -46,10 +46,6 @@ module ApplicationHelper
         end
     end
 
-    def delete_helper(model)
-        if logged_in? && current_user.id == model.user_id
-            button_to "Delete", post_path(model), :method => :delete, data: {confirm: "Are you sure?"}
-        end
-    end
+    
     
 end

@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.new(post_params)   
         if @post.save
-            redirect_to user_path(current_user)
+            redirect_to user_posts_path(current_user)
         else
             flash.now[:alert] = "There was a problem"
             render :new
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     def like
         @post = Post.all.find_by(id: params[:id])
         Like.create(user_id: current_user.id, post_id: @post.id)
-        redirect_to user_path(current_user)
+        redirect_to user_posts_path(current_user)
     end
 
     def comment
@@ -52,14 +52,14 @@ class PostsController < ApplicationController
     def update
         @post = Post.find_by(id: params[:id])
         @post.update(post_params)
-        redirect_to(@post)
+        redirect_to (@post)
     end
 
     def destroy
         @post = Post.find_by(id: params[:id])
         if current_user.id == @post.user_id
             @post.destroy
-            redirect_to user_path(@post)
+            redirect_to user_posts_path(@post)
         end
     end
 

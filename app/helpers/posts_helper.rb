@@ -15,6 +15,12 @@ module PostsHelper
         end
     end
 
+    def post_edit_helper(post)
+        if logged_in? && current_user.id == post.user_id
+            button_to "Edit Post", edit_post_path(post), method: "get"
+        end
+    end
+
     def comment_helper(post)
         if logged_in?
             button_to "Comment", comment_path(@post), method: "put"

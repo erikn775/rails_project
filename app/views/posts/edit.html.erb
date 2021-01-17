@@ -1,9 +1,1 @@
-<%= form_with(model: @post) do |f| %>
-    <%= f.label("Image Url:") %><br>
-    <%= f.text_field(:image_url) %><br>
-    <%= f.label("Title:") %><br>
-    <%= f.text_field(:title) %><br>
-    <%= f.label("Description:") %><br>
-    <%= f.text_area(:content) %><br><br>
-    <%= f.submit %>
-<% end %>
+<%= render 'form' %>
