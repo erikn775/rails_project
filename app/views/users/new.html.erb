@@ -1,17 +1,69 @@
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
-<h1>Sign Up</h1>
-  <%= form_with(model: @user) do |f| %>
-    <%= f.label("Name:") %><br>
-    <%= f.text_field :name %><br>
-    <%= f.label("Email:") %><br>
-    <%= f.text_field :email %><br>
-    <%= f.label("Username:") %><br>
-    <%= f.text_field :username %><br>
-    <%= f.label("Password:") %><br>
-    <%= f.password_field :password %><br>
-    <%= f.submit "Submit" %>
-  <% end %> 
+input[type=password], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 15px;
+  
+}
+</style>
+
+<div>
+  <h1>Sign Up</h1>
+
+  <% flash.each do |type, msg| %>
+    <div>
+      <%= msg %><br>
+    </div>
+  <% end %>
+  
+    <%= form_with(model: @user) do |f| %>
+      <%= f.label("Name:") %><br>
+      <%= f.text_field :name %><br>
+      <%= f.label("Email:") %><br>
+      <%= f.text_field :email %><br>
+      <%= f.label("Username:") %><br>
+      <%= f.text_field :username %><br>
+      <%= f.label("Password:") %><br>
+      <%= f.password_field :password %><br>
+      <%= f.submit "Submit" %>
+    <% end %> 
     
+</div> 
 
   
 

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             redirect_to user_path(user)
         else
-            @error = user.errors.full_messages.join(" - ")
+            flash.now[:alert] = "Sign up Failed (╯°□°）╯︵ ┻━┻  .... Try Again"
             render :new
         end
     end
