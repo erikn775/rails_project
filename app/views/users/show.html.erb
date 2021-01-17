@@ -1,67 +1,8 @@
-<style>
-div.polaroid {
-  width: 75%;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 100px;
-  border-radius: 10px;
-  
-}
+<h1>Profile Page</h1>
 
-img {
-    max-width: 750px;
-    display: block;
-    max-height: 500px;
-    margin-left: auto;
-    margin-right: auto;
-}
+<%= @user.name %><br>
+Member since: <%= date_posted(@user.created_at) %><br>
+Total Posts: <%= @user.posts.count %><br>
+Number of Cars: <%= @user.cars.count %><br>
+Number of Likes: <%= @user.likes.count %>
 
-p {
-    color: grey;
-    font-size: 10px;
-    text-align: right;
-}
-
-
-
-div.container {
-  text-align: left;
-  padding: 10px 20px;
-}
-
-body {
-  background-color: #F5F5F5;
-  font-size: 20px;
-}
-
-
-</style>
-<body>
-<h1>Posts</h1>
-
-
-
-<%= form_tag(user_path, method:"get") do |f| %>
-    <%= label_tag("Search:") %>
-    <%= text_field_tag('filter') %>
-    <%= submit_tag("Search") %>
-<% end %><br>
-
-<% flash.each do |type, msg| %>
-    <div>
-      <%= msg %><br>
-    </div>
-  <% end %>
-  
-
-<div class="polaroid">
-<% @posts.each do |post| %>
-     <div class="container" <h1><%=post.user.name %></h1>
-     <p>Posted at: <%= time_posted(post.created_at) %><br>
-     Likes: <%= post.likes.count %></p>
-     </div>
-     <%= link_to(display_image(post.image_url), post_path(post)) %>
-<% end %>
-</div
-
-</body>

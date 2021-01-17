@@ -46,19 +46,10 @@ module ApplicationHelper
         end
     end
 
-    def like_helper(post)
-        if logged_in?
-            if post.liked?(current_user) 
-                button_to "Like", like_path(post), method: "put", disabled: true   
-            else 
-                button_to "Like", like_path(post), method: "put" 
-            end
+    def delete_helper(model)
+        if logged_in? && current_user.id == model.user_id
+            button_to "Delete", post_path(model), :method => :delete, data: {confirm: "Are you sure?"}
         end
     end
-
-    def post_delete_helper(post)
-        if logged_in? && current_user.id == post.user_id
-            button_to "Delete Post", user_path(post), :method => :delete
-        end
-    end
+    
 end

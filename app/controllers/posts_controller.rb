@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
+    include PostsHelper
     include ApplicationHelper
     before_action :require_login
+
+    def index
+        @posts = filter(params[:filter])
+    end
 
     def new
         @post = Post.new

@@ -2,11 +2,8 @@
 
 <%= like_helper(@post) %><br>
    
-
-<% if logged_in? %><br>
-   <%= button_to "Comment", comment_path(@post), method: "put" %>
-<% end %>
-
+<%= comment_helper(@post) %><br>
+   
 Title:<br><br>
 <%= @post.title %><br><br>
 Description:<br>
@@ -20,5 +17,5 @@ Tags:
    <%= post.category.name+' '%>
 <% end %><br><br>
 
-<%= post_delete_helper(@post) %>
+<%= delete_helper(@post) %>
 
