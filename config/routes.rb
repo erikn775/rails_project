@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :users do
     resources :cars
   end
-  get '/login' => "sessions#new"
-  post '/sessions' => "sessions#create"
+  root 'home#show'
+  get '/login' => 'sessions#new'
+  post '/sessions' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/account/:id' => 'users#show'
   put '/post/:id/like' => 'posts#like', as: 'like'

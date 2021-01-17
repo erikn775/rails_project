@@ -30,21 +30,25 @@ module ApplicationHelper
         created_at.strftime("%I:%M %P %b %d, %Y")
     end
 
+    
+        
+    
+
     def filter(params)
     
             
         if params != nil
             params = params.capitalize
                 if Category.find_by(name: "#{params}") != nil
-                    Category.find_by(name: "#{params}").posts
+                    Category.find_by(name: "#{params}").posts.order('created_at DESC')
                 elsif params == "All"
-                    Post.all
+                    Post.all.order('created_at DESC')
                 else
                     flash.now[:alert] = "No tag with that name"
-                    Post.all
+                    Post.all.order('created_at DESC')
                 end
         else
-            Post.all
+            Post.all.order('created_at DESC')
         end
     end
 

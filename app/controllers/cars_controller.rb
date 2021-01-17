@@ -40,8 +40,10 @@ class CarsController < ApplicationController
 
     def destroy
         @car = Car.find_by(id: params[:id])
-        @car.destroy
-        redirect_to user_path(@car)
+        if current_user.id == @car.user_id
+            @car.destroy
+            redirect_to user_path(@car)
+        end
     end
 
     private

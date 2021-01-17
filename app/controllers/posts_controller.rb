@@ -2,10 +2,6 @@ class PostsController < ApplicationController
     include ApplicationHelper
     before_action :require_login
 
-    def index
-            @posts = Post.all
-    end
-
     def new
         @post = Post.new
         @post.post_categories.build
@@ -45,8 +41,10 @@ class PostsController < ApplicationController
 
     def destroy
         @post = Post.find_by(id: params[:id])
-        @post.destroy
-        redirect_to user_path(@post)
+        if current_user.id == @post.user_id
+            @post.destroy
+            redirect_to user_path(@post)
+        end
     end
 
 
