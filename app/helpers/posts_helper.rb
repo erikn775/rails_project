@@ -23,7 +23,7 @@ module PostsHelper
 
     def comment_helper(post)
         if logged_in?
-            button_to "Comment", comment_path(@post), method: "put"
+            button_to "Comment", comment_path(@post), method: "get"
         end
     end
 

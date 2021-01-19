@@ -22,6 +22,18 @@ Date Posted:<br>
 
 
 <%= like_helper(@post) %><br>
-<%= comment_helper(@post) %><br>
 <%= post_edit_helper(@post) %><br>
 <%= post_delete_helper(@post) %><br>
+
+<% @post.comments.each do |comment| %><br>
+   
+   <%= comment.user.name%>'s comment : <%= comment.content %><br>
+<% end %><br>
+
+<%= form_for @post, url: comment_path, method: :put do |f| %>
+   <%= f.label("Add a Comment:") %><br>
+   <%= f.text_area(:content, input_html: {autocomplete: 'off'}) %><br>
+   <%= f.submit("Add Comment") %>
+<% end %>
+
+

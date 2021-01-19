@@ -30,15 +30,13 @@ class PostsController < ApplicationController
     end
 
     def comment
-        #Need to add a content field in the comments table but I will do that later
-        #
-        #
-        #
-        #
-        # dont forget =<
         @post = Post.all.find_by(id: params[:id])
-        @comment = Comment.create(user_id: current_user.id, post_id: @post.id)
-        redirect_to user_path(current_user)
+        @comment = Comment.new(content: params[:post][:content], user_id: current_user.id, post_id: @post.id)
+        if @comment.save
+            redirect_to user_posts_path(current_user)
+        else
+            flash.now[:alert] = "There was a problem"
+        end
     end
 
     def show
@@ -71,4 +69,7 @@ class PostsController < ApplicationController
         params.require(:post).permit(:image_url, :title, :content, :car_id, category_ids: [])
     end
 
+    def comment_params
+        params.require(:comment).permit(:content, user_id, post_id)
+    end
 end
