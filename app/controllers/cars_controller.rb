@@ -19,7 +19,7 @@ class CarsController < ApplicationController
         if @car.save
             redirect_to car_path(@car)
         else
-            @error = @car.errors.full_messages.join(" - ")
+            flash.now[:alert] = @car.errors.full_messages.join(', ')+" "+"(╯°□°）╯︵ ┻━┻  .... Try Again"
             render :new
         end
     end
@@ -34,15 +34,23 @@ class CarsController < ApplicationController
 
     def update
         @car = Car.find_by(id: params[:id])
-        @car.update(car_params)
-        redirect_to car_path(@car)
+        if @car.update(car_params)
+            redirect_to car_path(@car)
+        else
+            flash.now[:alert] = @car.errors.full_messages.join(', ')+" "+"(╯°□°）╯︵ ┻━┻  .... Try Again"
+            render :edit
+        end
     end
 
     def destroy
         @car = Car.find_by(id: params[:id])
         if current_user.id == @car.user_id
-            @car.destroy
-            redirect_to user_path(@car)
+            if @car.destroy
+                flash[:message] = "#{@car.model} was successfully deleted"
+                redirect_to user_posts_path(@car)
+            else
+                flash.now[:alert] = "Car was not deleted (╯°□°）╯︵ ┻━┻  .... Try Again"
+            end 
         end
     end
 

@@ -1,5 +1,11 @@
 <h1><%= current_user.name.capitalize %>'s Cars</h1>
 
+<% flash.each do |type, msg| %>
+    <div>
+      <%= msg %><br>
+    </div>
+  <% end %>
+  
 <ul>
     <% @cars.each do |car| %>
         <li><%= link_to(car.year+' '+car.make+' '+car.model, car_path(car)) %><br>
