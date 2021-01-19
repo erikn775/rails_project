@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index]
   end
   root 'home#show'
+  get '/auth/:provider/callback', to: "sessions#omniauth"
   get '/login' => 'sessions#new'
   post '/sessions' => 'sessions#create'
   get '/logout' => 'sessions#destroy'

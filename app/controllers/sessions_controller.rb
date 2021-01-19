@@ -18,4 +18,21 @@ class SessionsController < ApplicationController
         reset_session
         redirect_to root_path
     end
+
+    def omniauth
+        user = User.create_from_omniauth(auth)
+        if user.valid?
+            session[:user_id] = user.id
+            flash[:message] = "You have successfully signed in with Google Oauth"
+            redirect_to user_posts_path(user)
+        else
+            flash[:message] = user.errors.full_messages.join(", ")+" "+"(╯°□°）╯︵ ┻━┻  .... Try Again"
+            redirect_to root_path
+        end
+    end
+
+    private 
+    def auth
+        request.env['omniauth.auth']
+    end
 end
