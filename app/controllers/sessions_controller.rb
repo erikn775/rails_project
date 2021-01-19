@@ -26,12 +26,13 @@ class SessionsController < ApplicationController
             flash[:message] = "You have successfully signed in with Google Oauth"
             redirect_to user_posts_path(user)
         else
-            flash[:message] = user.errors.full_messages.join(", ")+" "+"(╯°□°）╯︵ ┻━┻  .... Try Again"
+            flash[:message] = flash_helper(user)
             redirect_to root_path
         end
     end
 
     private 
+    
     def auth
         request.env['omniauth.auth']
     end

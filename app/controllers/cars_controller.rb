@@ -19,7 +19,7 @@ class CarsController < ApplicationController
         if @car.save
             redirect_to car_path(@car)
         else
-            flash.now[:alert] = @car.errors.full_messages.join(', ')+" "+"(╯°□°）╯︵ ┻━┻  .... Try Again"
+            flash.now[:alert] = flash_helper(@car)
             render :new
         end
     end
@@ -37,7 +37,7 @@ class CarsController < ApplicationController
         if @car.update(car_params)
             redirect_to car_path(@car)
         else
-            flash.now[:alert] = @car.errors.full_messages.join(', ')+" "+"(╯°□°）╯︵ ┻━┻  .... Try Again"
+            flash.now[:alert] = flash_helper(@car)
             render :edit
         end
     end
@@ -49,7 +49,7 @@ class CarsController < ApplicationController
                 flash[:message] = "#{@car.model} was successfully deleted"
                 redirect_to user_posts_path(@car)
             else
-                flash.now[:alert] = "Car was not deleted (╯°□°）╯︵ ┻━┻  .... Try Again"
+                flash.now[:alert] = "Car was not deleted"
             end 
         end
     end

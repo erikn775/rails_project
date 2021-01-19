@@ -11,7 +11,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             redirect_to user_posts_path(user)
         else
-            flash.now[:alert] = user.errors.full_messages.join(', ')+" "+"(╯°□°）╯︵ ┻━┻  .... Try Again"
+            flash.now[:alert] = flash_helper(user)
             render :new
         end
     end

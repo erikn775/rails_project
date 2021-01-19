@@ -12,5 +12,19 @@ class Post < ApplicationRecord
         !!self.likes.find{|like| like.user_id == user.id}
     end
     
-    
+    def filter(params)     
+        if params != nil
+            params = params.capitalize
+                if Category.find_by(name: "##{params}") != nil
+                    Category.find_by(name: "##{params}").posts.order('created_at DESC')
+                elsif params == "All"
+                    Post.all.order('created_at DESC')
+                else
+                    flash.now[:alert] = "No tag with that name"
+                    Post.all.order('created_at DESC')
+                end
+        else
+            Post.all.order('created_at DESC')
+        end
+    end
 end

@@ -57,12 +57,8 @@ hr {
     <h1>Welcome</h1>
     <%= render 'users/errors' %>
         <div class="button">
-        <%= button_to "Login", login_path, :method => :get %><br>
-        </div>
-        <div class="button">
-        <%= button_to "Sign up", new_user_path, :method => :get %><br>
-        </div>
-        <div class="button">
+        <%= button_to "Login", login_path, :method => :get %>
+        <%= button_to "Sign up", new_user_path, :method => :get %>
         <%= button_to "Log in with Google", '/auth/google_oauth2' %>
         </div>
     </div>
