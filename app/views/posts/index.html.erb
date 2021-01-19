@@ -47,11 +47,7 @@ body {
     <%= submit_tag("Search") %>
 <% end %><br>
 
-<% flash.each do |type, msg| %>
-    <div>
-      <%= msg %><br>
-    </div>
-  <% end %>
+<%= render 'users/errors' %>
   
 
 <div class="polaroid">

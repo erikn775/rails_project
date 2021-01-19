@@ -1,8 +1,4 @@
-<% flash.each do |type, msg| %>
-   <div>
-     <%= msg %><br>
-   </div>
- <% end %>
+<%= render 'users/errors' %>
 
 <div>
 <%= form_with(model: @car) do |f| %>

@@ -45,11 +45,7 @@ div {
 <div>
   <h1>Login</h1>
 
-    <% flash.each do |type, msg| %>
-      <div>
-        <%= msg %><br>
-      </div>
-    <% end %>
+  <%= render 'users/errors' %>
 
     <%= form_tag(sessions_path) do %>
       <label>Username:</label><br>
