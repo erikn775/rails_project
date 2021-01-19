@@ -26,4 +26,12 @@ module PostsHelper
             button_to "Comment", comment_path(@post), method: "put"
         end
     end
+
+    def your_car(post)
+        if post.car
+            content_tag(:p, "Yes")
+        else
+            content_tag(:p, "No")
+        end
+    end
 end

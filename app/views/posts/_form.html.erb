@@ -12,6 +12,8 @@
     <%= f.label("Description:") %><br>
     <%= f.text_area(:content) %><br><br>
     <%= f.label("Tags:") %><br>
-    <%= f.collection_check_boxes(:category_ids, Category.order(:name), :id, :name, prompt: true) %><br>
+    <%= f.collection_check_boxes(:category_ids, Category.order(:name), :id, :name, prompt: true) %><br><br>
+    <%= f.label("Add a car to the post (optional):") %><br>
+    <%= f.collection_select(:car_id, current_user.cars.order(:model), :id, :model, prompt: true) %><br><br>
     <%= f.submit %>
 <% end %>

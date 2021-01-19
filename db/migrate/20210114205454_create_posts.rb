@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :title
       t.string :content
       t.belongs_to :user
+      t.belongs_to :car
       t.timestamps
     end
   end

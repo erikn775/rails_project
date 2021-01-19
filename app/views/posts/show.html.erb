@@ -10,10 +10,12 @@ Title:<br><br>
 Description:<br>
 <p><%= @post.content %></p><br>
 
+Is this your car? <%= your_car(@post) %><br>
+
 Date Posted:<br>
 <%= date_posted(@post.created_at) %><br><br>
 
-Tags:
+<%= link_to("Tags:", categories_path) %>
 <% @post.post_categories.each do |post| %>
    <%= post.category.name+' '%>
 <% end %><br><br>

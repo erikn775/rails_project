@@ -33,8 +33,8 @@ module ApplicationHelper
     def filter(params)     
         if params != nil
             params = params.capitalize
-                if Category.find_by(name: "#{params}") != nil
-                    Category.find_by(name: "#{params}").posts.order('created_at DESC')
+                if Category.find_by(name: "##{params}") != nil
+                    Category.find_by(name: "##{params}").posts.order('created_at DESC')
                 elsif params == "All"
                     Post.all.order('created_at DESC')
                 else

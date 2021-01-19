@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_01_14_211530) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
+    t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -65,8 +66,10 @@ ActiveRecord::Schema.define(version: 2021_01_14_211530) do
     t.string "title"
     t.string "content"
     t.integer "user_id"
+    t.integer "car_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id"], name: "index_posts_on_car_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -75,6 +78,8 @@ ActiveRecord::Schema.define(version: 2021_01_14_211530) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.string "uid"
+    t.string "provider"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
