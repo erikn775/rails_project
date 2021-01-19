@@ -52,7 +52,7 @@ body {
 
 <div class="polaroid">
 <% @posts.each do |post| %>
-     <div class="container" <h1><%=post.user.name %></h1>
+     <div class="container" <h1><%=post.user.username %></h1>
      <p>Posted at: <%= time_posted(post.created_at) %><br>
      Likes: <%= post.likes.count %></p>
      </div>

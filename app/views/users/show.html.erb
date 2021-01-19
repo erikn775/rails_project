@@ -1,6 +1,6 @@
 <h1>Profile Page</h1>
 
-<%= @user.name %><br>
+<%= @user.username.capitalize %><br>
 Member since: <%= date_posted(@user.created_at) %><br>
 Total Posts: <%= @user.posts.count %><br>
 Number of Cars: <%= @user.cars.count %><br>

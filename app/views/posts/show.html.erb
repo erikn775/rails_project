@@ -27,7 +27,7 @@ Date Posted:<br>
 
 <% @post.comments.each do |comment| %><br>
    
-   <%= comment.user.name%>'s comment : <%= comment.content %><br>
+   <%= comment.user.username%>'s comment : <%= comment.content %><br>
 <% end %><br>
 
 <%= form_for @post, url: comment_path, method: :put do |f| %>
