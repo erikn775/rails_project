@@ -16,6 +16,7 @@ class CategoriesController < ApplicationController
         if @category.save
             redirect_to categories_path
         else
+            flash.now[:alert] = flash_helper(@category)
             render :new
         end
     end
