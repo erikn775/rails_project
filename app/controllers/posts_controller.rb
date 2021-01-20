@@ -29,7 +29,6 @@ class PostsController < ApplicationController
         redirect_to user_posts_path(current_user)
     end
 
-
     def show
         @post = Post.find_by(id: params[:id])
         

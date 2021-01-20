@@ -27,6 +27,12 @@ module PostsHelper
         end
     end
 
+    def delete_comment(comment)
+        if logged_in? && current_user.id == comment.user_id 
+            link_to("delete comment", comment_path(comment), :method => :delete )
+        end
+    end
+
     def your_car(post)
         if post.car
             content_tag(:p, "Yes")

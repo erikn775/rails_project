@@ -21,6 +21,10 @@ class UsersController < ApplicationController
         
     end
 
+    def most_posted
+        
+    end
+
     private
     
     def user_params
