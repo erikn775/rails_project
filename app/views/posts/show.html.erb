@@ -30,7 +30,7 @@ Date Posted:<br>
    <%= comment.user.username%>'s comment : <%= comment.content %><br>
 <% end %><br>
 
-<%= form_for @post, url: comment_path, method: :put do |f| %>
+<%= form_for @post.comments.build, url: comment_path, method: 'put' do |f| %>
    <%= f.label("Add a Comment:") %><br>
    <%= f.text_area(:content, input_html: {autocomplete: 'off'}) %><br>
    <%= f.submit("Add Comment") %>
