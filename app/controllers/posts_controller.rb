@@ -18,7 +18,7 @@ class PostsController < ApplicationController
         if @post.save
             redirect_to user_posts_path(current_user)
         else
-            flash.now[:alert] = "There was a problem"
+            flash.now[:alert] = flash_helper(@post)
             render :new
         end
     end
