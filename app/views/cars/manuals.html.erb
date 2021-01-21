@@ -1,0 +1,8 @@
+<h1>Save the Manuals</h1><br>
+
+
+<ul>
+    <% @cars.each do |car| %>
+        <li><%= link_to(car.year+' '+car.make+' '+car.model, car_path(car))%> - <%= car.user.username%><br>
+    <% end %>
+</ul>

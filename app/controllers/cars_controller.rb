@@ -28,6 +28,11 @@ class CarsController < ApplicationController
         @car = Car.find_by(id: params[:id])
     end
 
+    def manuals 
+        
+        @cars = Car.all.save_the_manuals
+    end
+
     def edit
         @car = Car.find_by(id: params[:id])
     end
