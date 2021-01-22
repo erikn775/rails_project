@@ -12,12 +12,6 @@ module ApplicationHelper
         return head(:forbidden) unless session.include?(:user_id)
     end
 
-    def authenication_required
-        if !logged_in?
-            redirect_to login_path
-        end
-    end
-
     def display_image(image)
         image_tag(image)
     end
@@ -33,4 +27,6 @@ module ApplicationHelper
     def flash_helper(model)
         model.errors.full_messages.join(', ')+" "+"(╯°□°）╯︵ ┻━┻  .... Try Again"
     end
+
+
 end

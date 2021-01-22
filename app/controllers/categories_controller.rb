@@ -25,16 +25,6 @@ class CategoriesController < ApplicationController
         @category = Category.find_by(id: params[:id])
     end
 
-    def edit
-        @category = Category.find_by(id: params[:id])
-    end
-
-    def update
-        @category = Category.find_by(id: params[:id])
-        @category.update(category_params)
-        redirect_to category_path(@category)
-    end
-
     def destroy
         @category = Category.find_by(id: params[:id])
         @category.destroy

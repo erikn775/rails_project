@@ -11,7 +11,7 @@ module PostsHelper
 
     def post_delete_helper(post)
         if logged_in? && current_user.id == post.user_id
-            button_to "Delete Post", post_path(post), :method => :delete, data: {confirm: "Are you sure?"}
+            button_to "Delete Post", post_path(post), :method => :delete
         end
     end
 
