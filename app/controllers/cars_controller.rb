@@ -29,7 +29,6 @@ class CarsController < ApplicationController
     end
 
     def manuals 
-        
         @cars = Car.all.save_the_manuals
     end
 

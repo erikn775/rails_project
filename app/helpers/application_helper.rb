@@ -28,5 +28,4 @@ module ApplicationHelper
         model.errors.full_messages.join(', ')+" "+"(╯°□°）╯︵ ┻━┻  .... Try Again"
     end
 
-
 end
