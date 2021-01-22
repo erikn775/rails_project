@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
     include ApplicationHelper
-    
+    before_action :require_login
     
     def create
         

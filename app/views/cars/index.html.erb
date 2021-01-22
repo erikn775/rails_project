@@ -1,10 +1,6 @@
 <h1><%= current_user.username.capitalize %>'s Cars</h1>
 
-<% flash.each do |type, msg| %>
-    <div>
-      <%= msg %><br>
-    </div>
-  <% end %>
+<%= render 'users/errors' %>
   
 <ul>
     <% @cars.each do |car| %>

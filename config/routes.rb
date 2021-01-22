@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     resources :cars
     resources :posts, only: [:index]
   end
-  #resources :comments, only: [:new, :create, :destroy]
   root 'home#show'
   get '/auth/:provider/callback', to: "sessions#omniauth"
   get '/login' => 'sessions#new'
